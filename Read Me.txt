@@ -1,8 +1,1 @@
-Adim adim internet sayfasini localde calistirarak ekran goruntulerini aldim hocam.
-
-"Ekran Goruntuleri" dosyasi altinda bulabilirsiniz.
-
-Bir urun satin alindiktan sonra sepete gidiyor ve oradaki son islem yani "buy" butonu ise anasayfaya tekrar yonlendiriyor.
-
-Mirac Birinci
-B1605.010049
+Simple E-Commerce Web Site
