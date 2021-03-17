@@ -1,0 +1,65 @@
+<!DOCTYPE>
+<html>
+
+<head>
+    <title>Product Details</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<script>
+    //Add To Basket butonuna basılınca çalışır.
+    function add(id) {
+        var username = document.getElementById("user").innerHTML;
+        var text = document.createElement("p");
+        text.style = "color:red;"
+        if (username == "Not Logged In") {//Giriş yapılmamışsa Please Login yazdıracağız
+            text.innerHTML = "Please Login";
+        } else {
+
+            var url = 'http://localhost:5000/add?id=' + id //Ürün idsini sorgu parametresi olarak kullanrak '/add' linkini çağırır.
+            fetch(new Request(url)).then(function (response) {
+                console.log(response.status);
+                if (response.status == 200) {//Eğer başarıyla response dönerse
+                    text.innerHTML = "Your item added to basket";
+
+                } else {//Başarısızsa
+                    text.innerHTML = "Could not add";
+                }
+                document.getElementById('maindiv').appendChild(text);
+            })
+        }
+    }
+
+</script>
+
+<body>
+    <a href="http://localhost:5000/checkout"
+        style="position: absolute; top: 20px; left: 20px; width: 32px; height: 32px;">
+        <!--Alışveriş arabası ikonu.-->
+        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="shopping-cart"
+            class="svg-inline--fa fa-shopping-cart fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 576 512">
+            <path fill="currentColor"
+                d="M528.12 301.319l47.273-208C578.806 78.301 567.391 64 551.99 64H159.208l-9.166-44.81C147.758 8.021 137.93 0 126.529 0H24C10.745 0 0 10.745 0 24v16c0 13.255 10.745 24 24 24h69.883l70.248 343.435C147.325 417.1 136 435.222 136 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-15.674-6.447-29.835-16.824-40h209.647C430.447 426.165 424 440.326 424 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-22.172-12.888-41.332-31.579-50.405l5.517-24.276c3.413-15.018-8.002-29.319-23.403-29.319H218.117l-6.545-32h293.145c11.206 0 20.92-7.754 23.403-18.681z">
+            </path>
+        </svg>
+    </a>
+
+    <p id="user" style="position: absolute; top: 20px; right: 20px;">{{username}}</p>
+    <div id="maindiv" class="jumbotron text-center">
+        <h3> Product Id: {{product.id}}</h3><br>
+        <p> Product Type: {{product.type}}</p><br>
+        <p> Product Brand: {{product.brand}}</p><br>
+        <p> Product Price: {{product.price}}</p><br>
+        <p> Product Color: {{product.color}}</p><br>
+        <button onclick="add({{product.id}})">Add To Basket</button>
+        {{#if isLoggedIn}}
+        <a style="position: absolute; bottom: 20px;" href="http://localhost:5000/logout">Logout</a>
+        {{/if}}
+    </div>
+
+</body>
+
+</html>

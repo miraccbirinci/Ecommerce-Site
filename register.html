@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Register</title>
+    <!-- Alttakiler Bootstrap için -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<!--
+ * GET: genellikle sunucudan istenen veriyi almak için kullanılır.
+ * POST: sunucuya veri yollanması için kullanılır çoğunlukla body denilen bir pakete sahiptir ve
+ * gönderilmek istenen veriler body e eklenerek göderilir.
+ -->
+<body>
+    <div class="jumbotron text-center">
+        <h2>Register</h4>
+        <form action="/register" method="POST"><!--submite tıklandığında action değerindeki urle 
+            (bu durumda '/register' yani localhost:5000/register) post request gönderiyor formdaki datalar otomatik olarak request bodysine ekleniyor.-->
+            <label for="fname">Username:</label><br>
+            <input type="text" id="username" name="username" value=""><br><br>
+            <label for="lname">Password:</label><br>
+            <input type="password" id="password" name="password" value=""><br><br>
+            <label for="lname">Password Again:</label><br>
+            <input type="password" id="pw_again" name="pw_again" value=""><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+</body>
+
+</html>

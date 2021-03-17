@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<!--index sayfasının aynısı ama giriş butonu yok çünkü user login olduğunda geliyor bu sayfa -->
+
+<head>
+    <meta charset="utf-8">
+    <title>Shopping Cart</title>
+    <!-- Alttakiler Bootstrap için -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+
+<body>
+    <p style="position: absolute; top: 20px; right: 20px;">{{username}}</p>
+    <div class="jumbotron text-center">
+        <h3>Your Shopping Cart</h3>
+        <table style="margin-left: 40%">
+            {{#each products}} <!--products listesi içindeki her eleman için-->
+            <tr>
+                <td>
+                    <h4>{{this.brand}} {{this.type}}: </h4>
+                </td>
+                <td>
+                    <h4>{{this.price}}</h4>
+                </td>
+            </tr>
+            <br>
+            {{/each}}
+            <tr>
+                <td>
+                    <h4>Total:</h4>
+                </td>
+                <td>
+                    <h3>{{total}}</h3>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <a href="http://localhost:5000/buy">Buy</a>
+        {{#if isLoggedIn}}
+        <a style="position: absolute; bottom: 20px;" href="http://localhost:5000/logout">Logout</a>
+        {{/if}}
+
+
+    </div>
+
+
+</body>
+
+</html>
